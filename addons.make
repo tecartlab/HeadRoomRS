@@ -1,0 +1,7 @@
+ofxGuiExtended
+ofxNetwork
+ofxOpenCv
+ofxOsc
+ofxPoco
+ofxRSSDK
+ofxXmlSettings
