@@ -9,7 +9,6 @@
 #include "Grid.h"
 #include "TrackingNetworkManager.h"
 #include "Frustum.h"
-#include "ofAdvEasyCam.h"
 #include "CaptureMeshArray.h"
 
 #include "ofxRSSDKv2.h"
@@ -139,7 +138,7 @@ class ofApp : public ofBaseApp{
     void measurementCycleFine();
 
     void drawCalibrationPoints();
-    ofVec3f calcPlanePoint(ofParameter<ofVec2f> & cpoint, int _size, int _step);
+	glm::vec3 calcPlanePoint(ofParameter<glm::vec2> & cpoint, int _size, int _step);
     
     bool bUpdateCalc = false;
     bool bUpdateMeasurment = false;
@@ -180,11 +179,11 @@ class ofApp : public ofBaseApp{
     ofxGuiPanel *setupCalib;
     //ofxGuiPanel *deviceCalib;
     
-    ofParameter<ofVec2f> calibPoint1;
-    ofParameter<ofVec2f> calibPoint2;
-    ofParameter<ofVec2f> calibPoint3;
+    ofParameter<glm::vec2> calibPoint1;
+    ofParameter<glm::vec2> calibPoint2;
+    ofParameter<glm::vec2> calibPoint3;
     
-    ofParameter<ofVec3f> transformation;
+    ofParameter<glm::vec3> transformation;
     
     ofParameterGroup frustumGuiGroup;
 

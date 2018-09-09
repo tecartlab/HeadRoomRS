@@ -48,9 +48,9 @@ void ofApp::setup(){
     setupCalib->add(captureVideo.set("use video", true));
     setupCalib->add(blobGrain.set("Grain", 2, 1, 4));
 
-    setupCalib->add(calibPoint1.set("calibA", ofVec2f(320, 240), ofVec2f(0, 0), ofVec2f(640, 480)));
-    setupCalib->add(calibPoint2.set("calibB", ofVec2f(320, 240), ofVec2f(0, 0), ofVec2f(640, 480)));
-    setupCalib->add(calibPoint3.set("calibC", ofVec2f(320, 240), ofVec2f(0, 0), ofVec2f(640, 480)));
+    //setupCalib->add(calibPoint1.set("calibA", ofVec2f(320, 240), ofVec2f(0, 0), ofVec2f(640, 480)));
+    //setupCalib->add(calibPoint2.set("calibB", ofVec2f(320, 240), ofVec2f(0, 0), ofVec2f(640, 480)));
+    //setupCalib->add(calibPoint3.set("calibC", ofVec2f(320, 240), ofVec2f(0, 0), ofVec2f(640, 480)));
     
     nearFrustum.addListener(this, &ofApp::updateFrustumCone);
     farFrustum.addListener(this, &ofApp::updateFrustumCone);
@@ -60,7 +60,7 @@ void ofApp::setup(){
     frustumGuiGroup.add(farFrustum.set("farFrustum", 4000, 2000, 6000));
     setupCalib->addGroup(frustumGuiGroup);
     
-    setupCalib->add(transformation.set("matrix rx ry tz", ofVec3f(0, 0, 0), ofVec3f(-90, -90, -6000), ofVec3f(90, 90, 6000)));
+    //setupCalib->add(transformation.set("matrix rx ry tz", ofVec3f(0, 0, 0), ofVec3f(-90, -90, -6000), ofVec3f(90, 90, 6000)));
  
     setupCalib->loadFromFile("settings.xml");
 
@@ -373,8 +373,8 @@ void ofApp::updateMatrix(){
 }
 
 //--------------------------------------------------------------
-ofVec3f ofApp::calcPlanePoint(ofParameter<ofVec2f> & cpoint, int _size, int _step){
-	ofVec3f ppoint;
+glm::vec3 ofApp::calcPlanePoint(ofParameter<glm::vec2> & cpoint, int _size, int _step){
+	glm::vec3 ppoint;
 	/*
     int width = kinect.getWidth();
     int height = kinect.getHeight();
@@ -861,19 +861,19 @@ void ofApp::mousePressed(int x, int y, int button){
             int posY = y;
             if(0 <= posX && posX < KINECT_IMG_WIDTH &&
                0 <= posY && posY < KINECT_IMG_HEIGHT)
-                calibPoint1.set(ofVec3f(posX, posY));
+                calibPoint1.set(glm::vec2(posX, posY));
         }else if(ofGetKeyPressed('b')){
             int posX = (x - VIEWGRID_WIDTH) / viewMain.width * KINECT_IMG_WIDTH;
             int posY = y;
             if(0 <= posX && posX < KINECT_IMG_WIDTH &&
                0 <= posY && posY < KINECT_IMG_HEIGHT)
-                calibPoint2.set(ofVec3f(posX, posY));
+                calibPoint2.set(glm::vec2(posX, posY));
         }else if(ofGetKeyPressed('c')){
             int posX = (x - VIEWGRID_WIDTH) / viewMain.width * KINECT_IMG_WIDTH;
             int posY = y;
             if(0 <= posX && posX < KINECT_IMG_WIDTH &&
                0 <= posY && posY < KINECT_IMG_HEIGHT)
-                calibPoint3.set(ofVec3f(posX, posY));
+                calibPoint3.set(glm::vec2(posX, posY));
         }
     }
 }

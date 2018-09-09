@@ -2,3 +2,4 @@ obj/
 bin/HeadRoomRS_debug.exp
 bin/
 *.db
+.vs/

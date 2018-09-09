@@ -130,6 +130,9 @@
     <ClCompile Include="..\..\..\addons\ofxGuiExtended\src\view\ofxDOMLayoutHelper.cpp">
       <Filter>addons\ofxGuiExtended\src\view</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp">
       <Filter>addons\ofxNetwork\src</Filter>
     </ClCompile>

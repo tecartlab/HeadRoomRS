@@ -1,22 +1,37 @@
-# HeadRoom
+# HeadRoom RealSense, the RealSense network solution for *interaction space developers*.
 
 by Martin Fröhlich
 
+## Cameras
+
+Tested:
+    Intel® RealSense™ Depth Cameras D435
+
+Untested:
+    Intel® RealSense™ Depth Cameras D415
+    Intel® RealSense™ Depth Modules D400, D410, D420, D430
+    Intel® RealSense™ Vision Processor D4m
+    Intel® RealSense™ Tracking Module (limited support)
+
+## Supported Platforms
+
+Tested:
+    Windows 10 (Build 1803 or later)
+
+Untested:
+        Ubuntu 16.04/18.04 LTS (Linux Kernels 4.4, 4.8 ,4.10, 4.13 and 4.15)
+        Windows 8.1 *
+        Mac OS* (High Sierra 10.13.2)
+
+****hardware frame synchronization is currently (as in Sept. 2018) not available for the D400 series
+
 ## Overview
 
-**HeadRoom**, the missing kinect network solution for *interaction space developers*.
-
-It is based on openFrameworks and libfreenect, should run on OSX (tested), Windows and Linux.
-
-NOTE: Xbox Kinect models > 1414 (1473, etc) or Kinect4Windows devices that have been plugged into an XBox will not work with ofxKinect on Mac OSX
-
-If you have an Xbox Kinect model 1473+ or Kinect4Windows device and want to use it with ofxKinect on OSX, DO NOT plug it into an XBox! If you do, it will receive a firmware update which will cause it to freeze after about 20 secs with libfreenect/ofxKinect on OSX. Linux and Windows are fine. The fix is in the works.
-
-In the meantime, we suggest you get the original Xbox Kinect model 1414 and keep those new toys away from an XBox ...
+It is based on openFrameworks and Intel RealSense SDK, should run on Windows (tested).
 
 ### Functionality
 
-HeadRoom runs as an application on a dedicated computer with one attached kinect device. The machine needs to be powerfull enough to do all the tracking analysis necessary. 
+HeadRoom runs as an application on a dedicated computer with one attached RealSense device. The machine needs to be powerfull enough to do all the tracking analysis necessary. 
 
 It is built for a accurate tracking of bodies. The tracker can send the bodies position and heigth, head-toptip-position, head-center-position, eye-center-position and gaze direction.
 
@@ -138,41 +153,48 @@ the last message sent for the current frame.
 
 ---
 
-##Download and installation
+## Download
 
-in order to compile this app on your system, you need openframeworks.
-
-###openFrameworks
-You need to install the current master branch from github, check the [download page](http://openframeworks.cc/download) on the main site.
-
-Check out the Commit fc829d5 from 05/10/2017 by arturo. Some of the later commits are missing the libs/openFrameworks/types/ofBaseTypes.h file, which is required by the ofxGuiExtended external. (see below) 
- 
-###HeadRoom
-To grab a copy of HeadRoom for your platform, check here [download page](http://github.com/tecartlab).  
+To grab a copy of HeadRoom for your platform, check here [download page](http://github.com/tecartlab/HeadRoomRS/releases).  
  
 The `master` branch of this repository corresponds to the most recent release. This GitHub repository contains code and libs for all the platforms.
 
-drop it into the \<openframeworksfolder>/apps/\<yourappfolder>
+## Building
 
-you also need a copy of the openframeworks addon [ofxGuiExtended](https://github.com/frauzufall/ofxGuiExtended.git)
+### Dependecies
 
-drop it onto the \<openframeworksfolder>/addons/\<ofxGuiExtended>
+Microsoft Visual Studio Community edition 2017 https://visualstudio.microsoft.com/de/downloads/
+Intel® RealSense™ SDK 2.0 (build 2.16.0) https://github.com/IntelRealSense/librealsense
+Openframeworks release 0.10.0 [download page](http://openframeworks.cc/download).
+Openframeworks addon [ofxRSSDK](https://github.com/tecartlab/ofxRSSDK)
+Openframeworks addon [ofxGuiExtended](https://github.com/frauzufall/ofxGuiExtended)
 
-##How to
+### Instructions
+
+drop this repositoriy into the \<openframeworksfolder>/apps/\<yourappfolder>
+
+drop the addons into the \<openframeworksfolder>/addons/ folder
+
+#### Visual Studio
+Examles require to be linked to the installed RealSense SDK. All the examples assume the SDK is installed under C:\Program Files(x86)\Intel RealSense SDK 2.0
+
+if otherwise, change the following:
+
+* Menu > Project > Properties > C/C++ > General > Additional Include directories > (Edit...) > (RSSKD_Dir)\include
+* Menu > Project > Properties > Linker > General > Additional Library directories > (Edit...) > (RSSKD_Dir)\lib\x64
+
+
+## How to
 to come...
 
-##Version
+## Version
 HeadRoom uses [Semantic Versioning](http://semver.org/), 
 
-Version 0.0.2
-- switch to ofxGuiExtended
-- redesign of GUI structure
-- removal of MatrixServer
-
-Version 0.0.1		
+Version 0.0.1
+- moved code from HeadRoom for Kinect
 - initial release
 
-##Credits
+## Credits
 
 (c) by tecartlab.com
 
